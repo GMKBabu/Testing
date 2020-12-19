@@ -1,14 +1,22 @@
 <?php
 
-/**
- * @file
- * Connect to mysql
- */
-$con = mysqli_connect("database-2.czleudsggqsf.us-east-1.rds.amazonaws.com","admin","gmkbabu9","mydb");
+function OpenCon()
+ {
+ $dbhost = "teleteachers-staging.cchvgvxclr8b.us-east-1.rds.amazonaws.com";
+ $dbuser = "admin";
+ $dbpass = "U63jB5SkmaJyhG9P";
+ $db = "mydb";
 
-//Test Connection
-if(mysqli_connect_errno()){
-	echo "Failed to connect to MySQL: ".mysqli_connect_error();
-}
 
+ $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
+
+ 
+ return $conn;
+ }
+ 
+function CloseCon($conn)
+ {
+ $conn -> close();
+ }
+   
 ?>
